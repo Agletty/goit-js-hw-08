@@ -77,7 +77,7 @@ function createMarkup(images) {
             class="gallery-image"
             src="${preview}"
             data-source="${original}"
-            alt="${description} "
+            alt="${description}"
           />
         </a>
       </li>`
@@ -93,14 +93,8 @@ function imageClick(event) {
     return;
   }
 
-  const original = event.target.dataset.sourse;
-  const description = event.target.description;
-
-  const closeModal = (event) => {
-    if (event.code === "Escape") {
-      return instance.close();
-    }
-  };
+  const original = event.target.dataset.source;
+  const description = event.target.alt;
 
   const instance = basicLightbox.create(
     `<div class="modal">
@@ -120,5 +114,11 @@ function imageClick(event) {
       },
     }
   );
+
+  const closeModal = (event) => {
+    if (event.code === "Escape") {
+      return instance.close();
+    }
+  };
   instance.show();
 }
