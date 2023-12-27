@@ -93,6 +93,12 @@ function imageClick(event) {
     return;
   }
 
+  const closeModal = (event) => {
+    if (event.key === "Escape") {
+      return instance.close();
+    }
+  };
+
   const original = event.target.dataset.source;
   const description = event.target.alt;
 
@@ -115,10 +121,5 @@ function imageClick(event) {
     }
   );
 
-  const closeModal = (event) => {
-    if (event.code === "Escape") {
-      return instance.close();
-    }
-  };
   instance.show();
 }
